@@ -1,0 +1,9 @@
+CREATE TABLE marcador (
+playerid INT NOT NULL AUTO_INCREMENT,
+playername VARCHAR(255) NOT NULL,
+resultsimage INT,
+time INT,
+position INT,
+level VARCHAR(255),
+PRIMARY KEY (playerid)
+)

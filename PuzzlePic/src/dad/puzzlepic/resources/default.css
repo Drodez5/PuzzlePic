@@ -1,0 +1,23 @@
+.root{
+	-fx-background-color: white;
+}
+.button{
+	-fx-background-color: transparent;
+	-fx-font-size: 15pt;
+	-fx-font-weight: bold;
+}
+.button:hover{
+	-fx-background-color: lightblue;
+}
+.play{
+	-fx-background-color: yellow ;
+}
+.score{
+	-fx-background-color: green ;
+}
+.about{
+	-fx-background-color: blue ;
+}
+.exit{
+	-fx-background-color: red ;
+}

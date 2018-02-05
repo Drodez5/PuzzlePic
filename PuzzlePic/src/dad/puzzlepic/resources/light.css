@@ -1,0 +1,14 @@
+.root{
+	-fx-background-color: lightslategray;
+	-fx-text-fill: lightyellow ;
+}
+.button{
+	-fx-font-weight: bold;
+	-fx-background-color: lightskyblue;
+	-fx-font-size: 15pt;
+}
+
+.button:hover{
+	-fx-background-color: lightcoral;
+	-fx-border-color: lightblue;
+ }

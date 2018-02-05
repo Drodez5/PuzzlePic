@@ -1,0 +1,12 @@
+.root{
+	-fx-background-color: orange ;
+}
+.button{
+	-fx-background-color: darkgreen;
+	-fx-font-size: 15pt;
+	-fx-text-fill: ivory;
+}
+.button:hover{
+	-fx-background-color: green;
+	-fx-border-color: orangered ;
+}
