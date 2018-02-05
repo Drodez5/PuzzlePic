@@ -1,6 +1,6 @@
 package dad.puzzlepic.views;
 
-import dad.puzzlepic.controllers.MenuController;
+import dad.puzzlepic.controllers.PuzzlePicController;
 import dad.puzzlepic.controllers.PuzzlePiecesFacilController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ public class PuzzlePicApp extends Application {
 
 	public PuzzlePiecesFacilController tableroFacilController;
 	public static Scene scene;
-	private MenuController controlador;
+	private PuzzlePicController controlador;
 	private static Stage primaryStage;
 	
 
@@ -21,10 +21,10 @@ public class PuzzlePicApp extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		PuzzlePicApp.primaryStage = primaryStage;
-		controlador = new MenuController();
+		controlador = new PuzzlePicController();
 
 
-		scene = new Scene(controlador.getView(), 720, 720);
+		scene = new Scene(controlador.getVista(), 720, 720);
 		scene.getStylesheets().add(getClass().getResource("/dad/puzzlepic/resources/default.css").toExternalForm());
 
 		primaryStage.setTitle("PuzzlEpic");
