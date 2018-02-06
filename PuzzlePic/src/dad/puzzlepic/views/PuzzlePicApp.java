@@ -16,7 +16,7 @@ public class PuzzlePicApp extends Application {
 	private PuzzlePicController controlador;
 	private static Stage primaryStage;
 	
-
+//hola
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
