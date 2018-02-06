@@ -28,6 +28,10 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import dad.puzzlepic.controllers.MarcadorController;
+import dad.puzzlepic.controllers.MenuController;
+import dad.puzzlepic.controllers.OpcionesPartidasController;
+import dad.puzzlepic.controllers.PuzzlePiecesController;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -38,7 +42,9 @@ public class PuzzlePicController implements Initializable {
 	private MenuController controladorMenu;
 	private MarcadorController controladorMarcador;
 	private OpcionesPartidasController controladorOpciones;
+	private PuzzlePiecesController controladorPuzzlePieces;
 	private AudioClip audio;
+	private String dificultad;
 
 	private Stage primaryStage;
 
@@ -49,8 +55,9 @@ public class PuzzlePicController implements Initializable {
 		primaryStage = PuzzlePicApp.getPrimaryStage();
 		vista = new BorderPane();
 		controladorMarcador = new MarcadorController();
-		controladorMenu = new MenuController();
+		controladorMenu = new MenuController(this);
 		controladorOpciones = new OpcionesPartidasController();
+
 		initialize(null, null);
 
 	}
@@ -62,12 +69,7 @@ public class PuzzlePicController implements Initializable {
 		audio.play();
 
 		vista.setCenter(controladorMenu.getView());
-		controladorMenu.getPlayButton().setOnAction(e -> onJugarButtonAction(e));
-		controladorMenu.getThemeButton().setOnAction(e -> onTemaButtonAction(e));
-		controladorMenu.getMarcadorButton().setOnAction(e -> onMarcadorButtonAction(e));
-		controladorMenu.getAboutButton().setOnAction(e -> onAboutButtonAction(e));
-		controladorMenu.getExitButton().setOnAction(e -> onSalirButtonAction(e));
-		controladorMenu.getSoundButton().setOnAction(e -> onSonidoButtonAction(e));
+
 		controladorMarcador.getVolverButton().setOnAction(e -> onVolverMenuButtonAction(e));
 		controladorOpciones.getBackButton().setOnAction(e -> onVolverMenuButtonAction(e));
 		controladorOpciones.getContinueButton().setOnAction(e -> onIniciarPartidaButtonAction(e));
@@ -108,96 +110,50 @@ public class PuzzlePicController implements Initializable {
 			File file = new File("config.properties");
 
 			try {
-				if (file.exists()) {
+				if (file.exists())
 					file.delete();
 
-					output = new FileOutputStream("config.properties");
-					crearArchivoProperties(archivoPropiedades, output);
+				output = new FileOutputStream("config.properties");
+				crearArchivoProperties(archivoPropiedades, output);
 
-				} else {
-					output = new FileOutputStream("config.properties");
-					crearArchivoProperties(archivoPropiedades, output);
-				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
-
 			}
 
 			switch (controladorOpciones.getLvlCombo().getValue()) {
 			case FACIL:
 				System.out.println("FACIL");
-
-				switch (controladorOpciones.getComboGame().getValue()) {
-				case PUZZLE_PIECES:
-					System.out.println("PUZLE PIECES");
-
-					break;
-				case MATCH_PUZZLE:
-					System.out.println("MATCH PUZZLE");
-					break;
-
-				case SLIDING_PUZZLE:
-					System.out.println("SLIDING PUZZLE");
-					break;
-
-				default:
-					break;
-				}
-
+				dificultad = "FACIL";
 				break;
-
 			case MEDIA:
 				System.out.println("MEDIA");
-				switch (controladorOpciones.getComboGame().getValue()) {
-				case PUZZLE_PIECES:
-					System.out.println("PUZLE PIECES");
-
-					break;
-				case MATCH_PUZZLE:
-					System.out.println("MATCH PUZZLE");
-					break;
-
-				case SLIDING_PUZZLE:
-					System.out.println("SLIDING PUZZLE");
-					break;
-
-				default:
-					break;
-				}
-
+				dificultad = "MEDIA";
 				break;
 
 			case DIFICIL:
 				System.out.println("DIFICIL");
-				switch (controladorOpciones.getComboGame().getValue()) {
-				case PUZZLE_PIECES:
-					System.out.println("PUZLE PIECES");
-
-					break;
-				case MATCH_PUZZLE:
-					System.out.println("MATCH PUZZLE");
-					break;
-
-				case SLIDING_PUZZLE:
-					System.out.println("SLIDING PUZZLE");
-					break;
-
-				default:
-					break;
-				}
-
+				dificultad = "DIFICIL";
 				break;
 
 			default:
 				break;
 			}
 
-			if (controladorOpciones.getLvlCombo().getValue().equals(Dificultad.FACIL)) {
+			switch (controladorOpciones.getComboGame().getValue()) {
+			case PUZZLE_PIECES:
+				System.out.println("PUZLE PIECES");
+				// vista.setCenter(puzz);
+				break;
+			case MATCH_PUZZLE:
+				System.out.println("MATCH PUZZLE");
+				break;
 
-			} else if (controladorOpciones.getLvlCombo().getValue().equals(Dificultad.MEDIA)) {
+			case SLIDING_PUZZLE:
+				System.out.println("SLIDING PUZZLE");
+				break;
 
-			} else {
-
+			default:
+				break;
 			}
 
 		}
@@ -217,105 +173,6 @@ public class PuzzlePicController implements Initializable {
 
 	private void onVolverMenuButtonAction(ActionEvent e) {
 		vista.setCenter(controladorMenu.getView());
-	}
-
-	private void onSonidoButtonAction(ActionEvent e) {
-		compruebaSonido();
-
-	}
-
-	// PARAR O REPRODUCIR MUSICA
-	private boolean compruebaSonido() {
-		boolean sonido = true;
-		if (audio.isPlaying()) {
-			audio.stop();
-			controladorMenu.getSonidoImage().setImage(new Image("/dad/puzzlepic/resources/sound_off.png"));
-			sonido = false;
-			System.out.println("No hay sonido");
-			return sonido;
-
-		} else {
-			audio.play();
-			controladorMenu.getSonidoImage().setImage(new Image("/dad/puzzlepic/resources/sound_on.png"));
-			sonido = true;
-			System.out.println("hay sonido");
-			return sonido;
-
-		}
-
-	}
-
-	private void onSalirButtonAction(ActionEvent e) {
-		Alert alertExit = new Alert(AlertType.CONFIRMATION);
-		alertExit.setTitle("PuzzlePic");
-		alertExit.setHeaderText("Saliendo de PuzzlePic");
-		alertExit.initOwner(PuzzlePicApp.getPrimaryStage());
-		alertExit.initModality(Modality.APPLICATION_MODAL);
-		alertExit.setContentText("¿Seguro que quiere salir?");
-
-		Optional<ButtonType> result = alertExit.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			Platform.exit();
-		}
-
-	}
-
-	private void onAboutButtonAction(ActionEvent e) {
-		Dialog<Void> dialog = new Dialog<>();
-		dialog.setTitle("About...");
-		dialog.initOwner(primaryStage);
-		dialog.setContentText("Equipo de desarrollo:\n" + "Federico Lleo\n" + "Isaac Mendez\n" + "Domingo Rodríguez");
-		dialog.setGraphic(new ImageView(getClass().getResource("/dad/puzzlepic/resources/team.png").toExternalForm()));
-		ButtonType ok = new ButtonType("OK", ButtonData.CANCEL_CLOSE);
-		dialog.getDialogPane().getButtonTypes().add(ok);
-		dialog.showAndWait();
-
-	}
-
-	private void onMarcadorButtonAction(ActionEvent e) {
-		vista.setCenter(controladorMarcador.getView());
-	}
-
-	private void onTemaButtonAction(ActionEvent e) {
-
-		List<String> choices = new ArrayList<String>();
-		choices.add("DEFAULT");
-		
-		choices.add("LIGHT");
-		choices.add("ORANGE");
-		choices.add("DARK");
-
-		ChoiceDialog<String> dialog = new ChoiceDialog<>("DEFAULT", choices);
-		dialog.setTitle("Elige un tema");
-		dialog.initOwner(primaryStage);
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		dialog.setHeaderText("Cambia la apariencia");
-		dialog.setContentText("Elige una skin:");
-		Optional<String> result = dialog.showAndWait();
-
-		switch (result.get()) {
-		case "LIGHT":
-			primaryStage.getScene().getStylesheets().clear();
-			primaryStage.getScene().getStylesheets().
-					add(getClass().getResource("/dad/puzzlepic/resources/light.css").toExternalForm());
-			break;
-		case "DARK":
-			primaryStage.getScene().getStylesheets().clear();
-			primaryStage.getScene().getStylesheets()
-					.add(getClass().getResource("/dad/puzzlepic/resources/dark.css").toExternalForm());
-			break;
-		case "ORANGE":
-			primaryStage.getScene().getStylesheets().clear();
-			primaryStage.getScene().getStylesheets()
-					.add(getClass().getResource("/dad/puzzlepic/resources/orange.css").toExternalForm());
-			break;
-		case "DEFAULT":
-			primaryStage.getScene().getStylesheets().clear();
-			primaryStage.getScene().getStylesheets()
-					.add(getClass().getResource("/dad/puzzlepic/resources/default.css").toExternalForm());
-			break;
-		}
-
 	}
 
 	public File directorioChooser(String title, String initialDirectory) {
@@ -373,8 +230,32 @@ public class PuzzlePicController implements Initializable {
 
 	}
 
-	private void onJugarButtonAction(ActionEvent e) {
-		vista.setCenter(controladorOpciones.getView());
+	public MarcadorController getControladorMarcador() {
+		return controladorMarcador;
+	}
+
+	public OpcionesPartidasController getControladorOpciones() {
+		return controladorOpciones;
+	}
+
+	public PuzzlePiecesController getControladorPuzzlePieces() {
+		return controladorPuzzlePieces;
+	}
+
+	public AudioClip getAudio() {
+		return audio;
+	}
+
+	public String getDificultad() {
+		return dificultad;
+	}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	public String getDirectorio() {
+		return directorio;
 	}
 
 	public BorderPane getVista() {

@@ -1,7 +1,7 @@
 package dad.puzzlepic.views;
 
 import dad.puzzlepic.controllers.PuzzlePicController;
-import dad.puzzlepic.controllers.PuzzlePiecesFacilController;
+import dad.puzzlepic.controllers.PuzzlePiecesController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 public class PuzzlePicApp extends Application {
 
 
-	public PuzzlePiecesFacilController tableroFacilController;
+	public PuzzlePiecesController tableroFacilController;
 	public static Scene scene;
 	private PuzzlePicController controlador;
 	private static Stage primaryStage;

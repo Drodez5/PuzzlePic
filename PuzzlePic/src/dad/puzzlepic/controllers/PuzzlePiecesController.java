@@ -10,14 +10,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 
-public class PuzzlePiecesFacilController implements Initializable {
+public class PuzzlePiecesController implements Initializable {
 	
 	private PuzzlePicApp app;
 	
 	@FXML
 	private BorderPane view;
 
-	public PuzzlePiecesFacilController() throws IOException {
+	public PuzzlePiecesController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesFacilView.fxml"));
 		loader.setController(this);
 		loader.load();
