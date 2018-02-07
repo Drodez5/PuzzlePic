@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane prefHeight="900.0" prefWidth="1100.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<BorderPane fx:id="view" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="200.0" BorderPane.alignment="CENTER_LEFT">
          <children>
@@ -149,8 +148,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Resolver" />
-            <Button mnemonicParsing="false" text="Abandonar" />
+            <Button fx:id="abandonarButton" mnemonicParsing="false" text="Abandonar" />
          </children>
       </HBox>
    </bottom>
