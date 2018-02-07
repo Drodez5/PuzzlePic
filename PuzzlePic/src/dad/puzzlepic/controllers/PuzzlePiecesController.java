@@ -13,36 +13,33 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 public class PuzzlePiecesController implements Initializable {
-	
+
 	private PuzzlePicApp app;
-	
+
 	@FXML
 	private BorderPane view;
-	
-    @FXML
-    private Button abandonarButton;
-	
+
 	//
-	
+
 	private MainController mainController;
 
 	public PuzzlePiecesController(MainController mainController) throws IOException {
 		this.mainController = mainController;
-		
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesView.fxml"));
 		loader.setController(this);
 		loader.load();
-		
-		initialize(null,null);
+
+		initialize(null, null);
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		abandonarButton.setOnAction(e-> abandonarButtonOnAction(e));
+
 	}
-	
-	private void abandonarButtonOnAction(ActionEvent e) {
+
+	@FXML
+	void abandonarOnAction(ActionEvent event) {
 		mainController.getVista().setCenter(mainController.getControladorMenu().getView());
 	}
 
@@ -57,5 +54,5 @@ public class PuzzlePiecesController implements Initializable {
 	public void setApp(PuzzlePicApp app) {
 		this.app = app;
 	}
-	
+
 }

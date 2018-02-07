@@ -19,8 +19,7 @@ public class SlidingPuzzleController implements Initializable {
 	@FXML
 	private BorderPane view;
 	
-    @FXML
-    private Button abandonarButton;
+  
 	
 	//
 	
@@ -39,12 +38,16 @@ public class SlidingPuzzleController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		abandonarButton.setOnAction(e-> abandonarButtonOnAction(e));
+		
 	}
 	
-	private void abandonarButtonOnAction(ActionEvent e) {
-		mainController.getVista().setCenter(mainController.getControladorMenu().getView());
-	}
+	
+    @FXML
+    void abandonarOnAction(ActionEvent event) {
+    	mainController.getVista().setCenter(mainController.getControladorMenu().getView());
+
+    }
+	
 
 	public BorderPane getView() {
 		return view;
