@@ -16,8 +16,7 @@ El jugador pondrá su nombre/alias, el número de rompecabezas a resolver, dific
 
 #### *Partida en juego*
 
-El jugador deberá de montar el puzzle medialnte la colocación correcta de los fragmentos de la imagen resultado. Todas las pizas se podrán mover a excepción si se coloca en el lugar que le corresponde. Cuando todas las piezas estén colocadas, el tiempo se detendrá y su puntuación se guardará. Al completar todos los puzzles propuestos, la puntuación total se sumará y su puntuación se guardará en el marcador en la nube. Si por alguna razón, el jugador desiste del rompecabezas pulsando el botón "Abandonar", su puntuación será evaluada dependiendo del número de puzzles resueltos hasta el momento y saldrá directamente a la pantalla de inicio.
-
+El jugador deberá de montar el puzzle medialnte la colocación correcta de los fragmentos de la imagen resultado. Todas las pizas se podrán mover a excepción si se coloca en el lugar que le corresponde. Cuando todas las piezas estén colocadas, el tiempo se detendrá y su puntuación se guardará. Al completar todos los puzzles propuestos, la puntuación total se sumará y su puntuación se guardará en el marcador en la nube. Si por alguna razón, el jugador desiste del rompecabezas pulsando el botón "Abandonar", su puntuación será evaluada dependiendo del número de puzzles resueltos hasta el momento, guardará la puntuación y saldrá directamente a la pantalla de inicio.
 
 
 #### *Marcador* y sistema de puntuación

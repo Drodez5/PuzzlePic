@@ -16,11 +16,19 @@ public class PuzzlePiecesController implements Initializable {
 	
 	@FXML
 	private BorderPane view;
+	
+	//
+	
+	private PuzzlePicController puzzlePicController;
 
-	public PuzzlePiecesController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesFacilView.fxml"));
+	public PuzzlePiecesController(PuzzlePicController puzzlePicController) throws IOException {
+		this.puzzlePicController = puzzlePicController;
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesView.fxml"));
 		loader.setController(this);
 		loader.load();
+		
+		initialize(null,null);
 	}
 
 	@Override

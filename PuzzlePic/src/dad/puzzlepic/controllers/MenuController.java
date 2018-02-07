@@ -64,6 +64,8 @@ public class MenuController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/MenuView.fxml"));
 		loader.setController(this);
 		loader.load();
+		
+		initialize(null,null);
 
 	}
 
