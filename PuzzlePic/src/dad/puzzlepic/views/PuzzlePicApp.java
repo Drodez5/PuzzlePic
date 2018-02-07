@@ -1,6 +1,6 @@
 package dad.puzzlepic.views;
 
-import dad.puzzlepic.controllers.PuzzlePicController;
+import dad.puzzlepic.controllers.MainController;
 import dad.puzzlepic.controllers.PuzzlePiecesController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ public class PuzzlePicApp extends Application {
 
 	public PuzzlePiecesController tableroFacilController;
 	public static Scene scene;
-	private PuzzlePicController controlador;
+	private MainController controlador;
 	private static Stage primaryStage;
 	
 //hola
@@ -21,7 +21,7 @@ public class PuzzlePicApp extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		PuzzlePicApp.primaryStage = primaryStage;
-		controlador = new PuzzlePicController();
+		controlador = new MainController();
 
 
 		scene = new Scene(controlador.getVista(), 720, 720);

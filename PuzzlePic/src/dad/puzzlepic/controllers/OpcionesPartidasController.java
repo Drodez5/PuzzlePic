@@ -58,9 +58,9 @@ public class OpcionesPartidasController implements Initializable {
 	
 	//
 	
-	private PuzzlePicController mainController;
+	private MainController mainController;
 
-	public OpcionesPartidasController(PuzzlePicController mainController) throws IOException {
+	public OpcionesPartidasController(MainController mainController) throws IOException {
 		this.mainController = mainController;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/OpcionesPartidasView.fxml"));
@@ -160,10 +160,12 @@ public class OpcionesPartidasController implements Initializable {
 				break;
 			case MATCH_PUZZLE:
 				System.out.println("MATCH PUZZLE");
+				mainController.getVista().setCenter(mainController.getMatchPuzzleController().getView());
 				break;
 
 			case SLIDING_PUZZLE:
 				System.out.println("SLIDING PUZZLE");
+				mainController.getVista().setCenter(mainController.getSlidingPuzzleController().getView());
 				break;
 
 			default:

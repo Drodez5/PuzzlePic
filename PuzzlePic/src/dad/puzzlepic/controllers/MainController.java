@@ -35,7 +35,7 @@ import dad.puzzlepic.controllers.PuzzlePiecesController;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class PuzzlePicController implements Initializable {
+public class MainController implements Initializable {
 
 	private BorderPane vista;
 
@@ -43,6 +43,8 @@ public class PuzzlePicController implements Initializable {
 	private MarcadorController controladorMarcador;
 	private OpcionesPartidasController controladorOpciones;
 	private PuzzlePiecesController controladorPuzzlePieces;
+	private MatchPuzzleController matchPuzzleController;
+	private SlidingPuzzleController slidingPuzzleController;
 	private AudioClip audio;
 	private String dificultad;
 
@@ -50,7 +52,7 @@ public class PuzzlePicController implements Initializable {
 
 	private String directorio = null;
 
-	public PuzzlePicController() throws IOException {
+	public MainController() throws IOException {
 
 		primaryStage = PuzzlePicApp.getPrimaryStage();
 		vista = new BorderPane();
@@ -58,6 +60,9 @@ public class PuzzlePicController implements Initializable {
 		controladorMenu = new MenuController(this);
 		controladorOpciones = new OpcionesPartidasController(this);
 		controladorPuzzlePieces = new PuzzlePiecesController(this);
+		matchPuzzleController = new MatchPuzzleController(this);
+		slidingPuzzleController = new SlidingPuzzleController(this);
+		
 
 		initialize(null, null);
 
@@ -72,116 +77,10 @@ public class PuzzlePicController implements Initializable {
 		vista.setCenter(controladorMenu.getView());
 
 		controladorMarcador.getVolverButton().setOnAction(e -> onVolverMenuButtonAction(e));
-		// controladorOpciones.getBackButton().setOnAction(e ->
-		// onVolverMenuButtonAction(e));
-		// controladorOpciones.getContinueButton().setOnAction(e ->
-		// onIniciarPartidaButtonAction(e));
-		// controladorOpciones.getOpenButton().setOnAction(e -> onAbrirButtonAction(e));
-
+		
 	}
 
-	// private void onAbrirButtonAction(ActionEvent e) {
-	// try {
-	// File selectedDirectory = directorioChooser("Selecciona carpeta de imagenes",
-	// ".");
-	// if (selectedDirectory.isDirectory()) {
-	// controladorOpciones.getDirectorioLabel().setText(selectedDirectory.getAbsolutePath());
-	// directorio = selectedDirectory.getAbsolutePath().toString();
-	// } else {
-	// error("Error de seleeción", "Has de seleccionar una carpeta.", null);
-	// }
-	// } catch (NullPointerException e1) {
-	// error("Error de seleeción", "No se puedo cargar la carpeta, de imagenes",
-	// e1);
-	// }
-	// }
-	//
-	// private void onIniciarPartidaButtonAction(ActionEvent e) {
-	// if (controladorOpciones.getPlayerField().getText().equals("")
-	// || controladorOpciones.getPlayerField().getText() == null || directorio ==
-	// null) {
-	// Alert alert = new Alert(AlertType.ERROR);
-	// alert.setTitle("Error!!");
-	// alert.setHeaderText("Algo ha fallado...");
-	// alert.setContentText("Por favor, revise los campos.");
-	// alert.initModality(Modality.APPLICATION_MODAL);
-	// alert.initOwner(primaryStage);
-	// alert.showAndWait();
-	//
-	// } else {
-	//
-	// Properties archivoPropiedades = new Properties();
-	// OutputStream output = null;
-	//
-	// File file = new File("config.properties");
-	//
-	// try {
-	// if (file.exists())
-	// file.delete();
-	//
-	// output = new FileOutputStream("config.properties");
-	// crearArchivoProperties(archivoPropiedades, output);
-	//
-	// } catch (IOException e1) {
-	// e1.printStackTrace();
-	// }
-	//
-	// switch (controladorOpciones.getLvlCombo().getValue()) {
-	// case FACIL:
-	// System.out.println("FACIL");
-	// dificultad = "FACIL";
-	// break;
-	// case MEDIA:
-	// System.out.println("MEDIA");
-	// dificultad = "MEDIA";
-	// break;
-	//
-	// case DIFICIL:
-	// System.out.println("DIFICIL");
-	// dificultad = "DIFICIL";
-	// break;
-	//
-	// default:
-	// break;
-	// }
-	//
-	// switch (controladorOpciones.getComboGame().getValue()) {
-	// case PUZZLE_PIECES:
-	// System.out.println("PUZLE PIECES");
-	// vista.setCenter(controladorPuzzlePieces.getView());
-	// break;
-	// case MATCH_PUZZLE:
-	// System.out.println("MATCH PUZZLE");
-	// break;
-	//
-	// case SLIDING_PUZZLE:
-	// System.out.println("SLIDING PUZZLE");
-	// break;
-	//
-	// default:
-	// break;
-	// }
-	//
-	// }
-	//
-	// }
-
-	// private void crearArchivoProperties(Properties archivoPropiedades,
-	// OutputStream output) throws IOException {
-	// archivoPropiedades.setProperty("nombre",
-	// controladorOpciones.getPlayerField().getText());
-	// archivoPropiedades.setProperty("tiempo",
-	// controladorOpciones.getTimeSpinner().getValue().toString());
-	// archivoPropiedades.setProperty("rondas",
-	// controladorOpciones.getnRoundCombo().getValue().toString());
-	// archivoPropiedades.setProperty("dificultad",
-	// controladorOpciones.getLvlCombo().getValue().toString());
-	// archivoPropiedades.setProperty("modo",
-	// controladorOpciones.getComboGame().getValue().toString());
-	// archivoPropiedades.setProperty("directorio", "falta especificar");
-	// archivoPropiedades.store(output, null);
-	//
-	// }
+	
 
 	private void onVolverMenuButtonAction(ActionEvent e) {
 		vista.setCenter(controladorMenu.getView());
@@ -252,6 +151,16 @@ public class PuzzlePicController implements Initializable {
 
 	public PuzzlePiecesController getControladorPuzzlePieces() {
 		return controladorPuzzlePieces;
+	}
+	
+	
+
+	public MatchPuzzleController getMatchPuzzleController() {
+		return matchPuzzleController;
+	}
+
+	public SlidingPuzzleController getSlidingPuzzleController() {
+		return slidingPuzzleController;
 	}
 
 	public AudioClip getAudio() {

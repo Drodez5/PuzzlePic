@@ -24,9 +24,9 @@ public class PuzzlePiecesController implements Initializable {
 	
 	//
 	
-	private PuzzlePicController mainController;
+	private MainController mainController;
 
-	public PuzzlePiecesController(PuzzlePicController mainController) throws IOException {
+	public PuzzlePiecesController(MainController mainController) throws IOException {
 		this.mainController = mainController;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesView.fxml"));

@@ -27,7 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import dad.puzzlepic.controllers.MarcadorController;
 import dad.puzzlepic.controllers.OpcionesPartidasController;
-import dad.puzzlepic.controllers.PuzzlePicController;
+import dad.puzzlepic.controllers.MainController;
 import dad.puzzlepic.views.PuzzlePicApp;
 
 public class MenuController implements Initializable {
@@ -52,11 +52,11 @@ public class MenuController implements Initializable {
 
 	//
 
-	private PuzzlePicController mainController;
+	private MainController mainController;
 
 	private Stage primaryStage;
 
-	public MenuController(PuzzlePicController mainController) throws IOException {
+	public MenuController(MainController mainController) throws IOException {
 		this.mainController = mainController;
 
 		primaryStage = mainController.getPrimaryStage();
@@ -179,6 +179,7 @@ public class MenuController implements Initializable {
 			primaryStage.getScene().getStylesheets()
 					.add(getClass().getResource("/dad/puzzlepic/resources/default.css").toExternalForm());
 			break;
+		default : break;
 		}
 
 	}
