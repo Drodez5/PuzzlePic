@@ -28,7 +28,7 @@ public class SlidingPuzzleController implements Initializable {
 	public SlidingPuzzleController(MainController mainController) throws IOException {
 		this.mainController = mainController;
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/PuzzlePiecesView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/SlidingPuzzleView.fxml"));
 		loader.setController(this);
 		loader.load();
 		
@@ -45,7 +45,7 @@ public class SlidingPuzzleController implements Initializable {
     @FXML
     void abandonarOnAction(ActionEvent event) {
     	mainController.getVista().setCenter(mainController.getControladorMenu().getView());
-
+    	System.out.println("Holaa");
     }
 	
 

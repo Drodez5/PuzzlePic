@@ -37,11 +37,13 @@ public class PuzzlePiecesController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
+	
+	  @FXML
+	    void abandonarOnAction(ActionEvent event) {
+	    	mainController.getVista().setCenter(mainController.getControladorMenu().getView());
+	    	System.out.println("Holaa");
+	    }
 
-	@FXML
-	void abandonarOnAction(ActionEvent event) {
-		mainController.getVista().setCenter(mainController.getControladorMenu().getView());
-	}
 
 	public BorderPane getView() {
 		return view;

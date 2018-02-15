@@ -36,11 +36,13 @@ public class MatchPuzzleController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		abandonarButton.setOnAction(e-> abandonarButtonOnAction(e));
+
 	}
-	
-	private void abandonarButtonOnAction(ActionEvent e) {
+
+	@FXML
+	void abandonarOnAction(ActionEvent event) {
 		mainController.getVista().setCenter(mainController.getControladorMenu().getView());
+		System.out.println("Holaa");
 	}
 
 	public BorderPane getView() {

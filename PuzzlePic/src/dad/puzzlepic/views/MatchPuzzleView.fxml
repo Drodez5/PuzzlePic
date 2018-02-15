@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,145 +12,238 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="view" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="200.0" BorderPane.alignment="CENTER_LEFT">
-         <children>
-            <Label alignment="CENTER" text="PuzzlePic" />
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Jugador" />
-                  <Label text="Player1" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Tiempo" />
-                  <Label text="00:00" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Ronda" />
-                  <Label text="1" />
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-   </top>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-   <center>
-      <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fx:id="imagen1" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen2" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen3" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="2">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen4" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="3">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen5" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen6" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen7" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen8" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen9" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen10" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen11" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen12" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen13" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen14" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen15" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imagen16" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../resources/interrogation.jpg" />
-               </image>
-            </ImageView>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </GridPane>
-   </center>
+<BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="617.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="31.0" prefWidth="654.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="abandonarButton" mnemonicParsing="false" text="Abandonar" />
+            <Button mnemonicParsing="false" onAction="#abandonarOnAction" text="Abandonar" textFill="#c31b31" />
          </children>
       </HBox>
    </bottom>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="714.0" text="Match Puzzle" textFill="#0c7e8d">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="40.0" prefWidth="634.0" spacing="80.0">
+               <children>
+                  <Label prefHeight="37.0" prefWidth="108.0" text="PuzzlePic" HBox.hgrow="SOMETIMES">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Jugador" />
+                        <Label text="Player 1" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Tiempo" />
+                        <Label text="0:00" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Ronda" />
+                        <Label text="1" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefWidth="200.0" />
+            <Label alignment="CENTER" text="La mezcla" />
+            <GridPane fx:id="lamezcla" minHeight="0.0" minWidth="0.0" VBox.vgrow="SOMETIMES">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
+                     <graphic>
+                        <ImageView fx:id="cerocero11" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fx:id="cerocero12" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fx:id="cerocero9" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fx:id="cerocero16" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fx:id="cerocero13" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fx:id="cerocero10" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fx:id="cerocero17" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" layoutX="213.0" layoutY="24.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fx:id="cerocero14" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button graphicTextGap="0.0" layoutX="113.0" layoutY="290.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fx:id="cerocero15" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fx:id="cerocero111" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fx:id="cerocero112" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fx:id="cerocero113" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fx:id="cerocero114" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fx:id="cerocero115" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fx:id="cerocero116" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="cerocero1131" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/interrogation.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView fx:id="cerocero1132" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button graphicTextGap="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" GridPane.columnIndex="3">
+                     <graphic>
+                        <ImageView fx:id="cerocero1133" fitHeight="95.0" fitWidth="92.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/interrogation.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
 </BorderPane>
