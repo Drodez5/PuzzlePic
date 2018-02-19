@@ -1,4 +1,4 @@
-package dad.puzzlepic.controllers;
+package dad.puzzlepic.models;
 
 public enum Modo {
 	PUZZLE_PIECES,

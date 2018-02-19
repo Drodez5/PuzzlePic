@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import dad.puzzlepic.models.Dificultad;
+import dad.puzzlepic.models.Modo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

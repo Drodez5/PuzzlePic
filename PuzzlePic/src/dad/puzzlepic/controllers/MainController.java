@@ -32,6 +32,7 @@ import dad.puzzlepic.controllers.MarcadorController;
 import dad.puzzlepic.controllers.MenuController;
 import dad.puzzlepic.controllers.OpcionesPartidasController;
 import dad.puzzlepic.controllers.PuzzlePiecesController;
+import dad.puzzlepic.models.Jugador;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -46,11 +47,11 @@ public class MainController implements Initializable {
 	private MatchPuzzleController matchPuzzleController;
 	private SlidingPuzzleController slidingPuzzleController;
 	private AudioClip audio;
-	private String dificultad;
-
+	private Jugador jugador = new Jugador();
 	private Stage primaryStage;
+	private File[] fotos = null;
+	
 
-	private String directorio = null;
 
 	public MainController() throws IOException {
 
@@ -167,24 +168,18 @@ public class MainController implements Initializable {
 		return audio;
 	}
 
-	public String getDificultad() {
-		return dificultad;
+
+
+	public Jugador getJugador() {
+		return jugador;
 	}
 
-	public void setDificultad(String dificultad) {
-		this.dificultad = dificultad;
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
 	}
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	}
-
-	public String getDirectorio() {
-		return directorio;
-	}
-
-	public void setDirectorio(String directorio) {
-		this.directorio = directorio;
 	}
 
 	public MenuController getControladorMenu() {
@@ -198,5 +193,15 @@ public class MainController implements Initializable {
 	public void setVista(BorderPane vista) {
 		this.vista = vista;
 	}
+
+	public File[] getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(File[] fotos) {
+		this.fotos = fotos;
+	}
+
+	
 
 }

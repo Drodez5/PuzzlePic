@@ -5,9 +5,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Observable;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import dad.puzzlepic.models.Dificultad;
+import dad.puzzlepic.models.Jugador;
+import dad.puzzlepic.models.Modo;
+import dad.puzzlepic.models.TroceadorImagenes;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,14 +62,19 @@ public class OpcionesPartidasController implements Initializable {
 
 	@FXML
 	private ComboBox<Modo> comboGame;
-	
+
 	//
-	
+
+	private ObjectProperty<File> selectedDirectory = new SimpleObjectProperty<>();
 	private MainController mainController;
+	private TroceadorImagenes troceadorImagenes = new TroceadorImagenes();
+	private Jugador jugador = new Jugador();
+	private File foto;
+	
 
 	public OpcionesPartidasController(MainController mainController) throws IOException {
 		this.mainController = mainController;
-		
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/dad/puzzlepic/views/OpcionesPartidasView.fxml"));
 		loader.setController(this);
 		loader.load();
@@ -79,25 +91,37 @@ public class OpcionesPartidasController implements Initializable {
 		nRoundCombo.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
 		nRoundCombo.setValue(1);
 
+		// Bindeos
+		jugador.nombreProperty().bind(playerField.textProperty());
+		jugador.tiempoProperty().bind(timeSpinner.valueProperty());
+		jugador.rondasProperty().bind(nRoundCombo.valueProperty());
+		jugador.dificultadProperty().bind(lvlCombo.valueProperty());
+		jugador.modoProperty().bind(comboGame.valueProperty());
+		jugador.directorioProperty().bind(selectedDirectory);
+		directorioLabel.textProperty().bind(selectedDirectoryProperty().asString());
+
 		// Acciones
 		backButton.setOnAction(e -> onVolverMenuButtonAction(e));
-		continueButton.setOnAction(e -> onIniciarPartidaButtonAction(e));
+		continueButton.setOnAction(e -> {
+			try {
+				onIniciarPartidaButtonAction(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 		openButton.setOnAction(e -> onAbrirButtonAction(e));
 
 	}
-	
+
 	private void onVolverMenuButtonAction(ActionEvent e) {
+		
 		mainController.getVista().setCenter(mainController.getControladorMenu().getView());
 	}
 
-
 	private void onAbrirButtonAction(ActionEvent e) {
 		try {
-			File selectedDirectory = mainController.directorioChooser("Selecciona carpeta de imagenes", ".");
-			if (selectedDirectory.isDirectory()) {
-				mainController.getControladorOpciones().getDirectorioLabel().setText(selectedDirectory.getAbsolutePath());
-				mainController.setDirectorio(selectedDirectory.getAbsolutePath().toString());
-			} else {
+			selectedDirectory.set(mainController.directorioChooser("Selecciona carpeta de imagenes", "."));
+			if (!selectedDirectory.get().isDirectory()) {
 				mainController.error("Error de seleeción", "Has de seleccionar una carpeta.", null);
 			}
 		} catch (NullPointerException e1) {
@@ -105,9 +129,16 @@ public class OpcionesPartidasController implements Initializable {
 		}
 	}
 
-	private void onIniciarPartidaButtonAction(ActionEvent e) {
-		if (mainController.getControladorOpciones().getPlayerField().getText().equals("")
-				|| mainController.getControladorOpciones().getPlayerField().getText() == null || mainController.getControladorOpciones() == null) {
+	private void guardaFoto() {
+		File fotosJugador = new File("jugadores/" + jugador.getNombre() + "fotos/" + selectedDirectory.get().getName());
+		if(!fotosJugador.exists())
+			fotosJugador.mkdir();
+		selectedDirectory.get().renameTo(fotosJugador);
+		
+	}
+
+	private void onIniciarPartidaButtonAction(ActionEvent e) throws IOException  {
+		if (jugador.getNombre().equals("") || selectedDirectory.get().getName().equals("")) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error!!");
 			alert.setHeaderText("Algo ha fallado...");
@@ -117,8 +148,9 @@ public class OpcionesPartidasController implements Initializable {
 			alert.showAndWait();
 
 		} else {
-
-			Properties archivoPropiedades = new Properties();
+			seleccionarFoto();
+			// Esto hay que arreglarlo
+		  /*Properties archivoPropiedades = new Properties();
 			OutputStream output = null;
 
 			File file = new File("config.properties");
@@ -128,35 +160,40 @@ public class OpcionesPartidasController implements Initializable {
 					file.delete();
 
 				output = new FileOutputStream("config.properties");
-				
 
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+			//*/
+			
+				switch (lvlCombo.getValue()) {
 
-			switch (mainController.getControladorOpciones().getLvlCombo().getValue()) {
-			case FACIL:
-				System.out.println("FACIL");
-				mainController.setDificultad("FACIL");
-				break;
-			case MEDIA:
-				System.out.println("MEDIA");
-				mainController.setDificultad("MEDIA");
-				break;
+				case FACIL:
+					vaciaTroceadas();
+					mainController.setFotos(troceadorImagenes.trocearFoto(foto, 3));
+					break;
+					
+				case MEDIA:
+					vaciaTroceadas();
+					mainController.setFotos(troceadorImagenes.trocearFoto(foto, 6));
+					break;
 
-			case DIFICIL:
-				System.out.println("DIFICIL");
-				mainController.setDificultad("DIFICIL");
-				break;
+				case DIFICIL:
+					vaciaTroceadas();
+					mainController.setFotos(troceadorImagenes.trocearFoto(foto, 9));
+					break;
 
-			default:
-				break;
-			}
+				default:
+					break;
+				}
+		
 
+			
 			switch (mainController.getControladorOpciones().getComboGame().getValue()) {
 			case PUZZLE_PIECES:
 				System.out.println("PUZLE PIECES");
-				mainController.getVista().setCenter(mainController.getControladorPuzzlePieces().getView());
+				PuzzlePiecesController c = new PuzzlePiecesController(mainController);
+				mainController.getVista().setCenter(c.getView());
 				break;
 			case MATCH_PUZZLE:
 				System.out.println("MATCH PUZZLE");
@@ -171,12 +208,22 @@ public class OpcionesPartidasController implements Initializable {
 			default:
 				break;
 			}
-
 		}
-
 	}
 
-	
+	private void vaciaTroceadas() {
+		File directorioTroceadas = new File("PuzzlePic/src/dad/puzzlepic/resources/troceadas");			
+		for (File listFile : directorioTroceadas.listFiles()) 
+		listFile.delete();
+	}
+
+	private void seleccionarFoto() {
+		File[] fotos = selectedDirectory.get().listFiles();
+		int size = fotos.length;
+		int seleccionada = (int) (Math.random() * size + 0);
+		foto = fotos[seleccionada];
+	}
+
 	public BorderPane getView() {
 		return view;
 	}
@@ -219,6 +266,18 @@ public class OpcionesPartidasController implements Initializable {
 
 	public Label getDirectorioLabel() {
 		return directorioLabel;
+	}
+
+	public final ObjectProperty<File> selectedDirectoryProperty() {
+		return this.selectedDirectory;
+	}
+
+	public final File getSelectedDirectory() {
+		return this.selectedDirectoryProperty().get();
+	}
+
+	public final void setSelectedDirectory(final File selectedDirectory) {
+		this.selectedDirectoryProperty().set(selectedDirectory);
 	}
 
 }

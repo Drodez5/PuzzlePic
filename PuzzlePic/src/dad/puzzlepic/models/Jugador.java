@@ -1,24 +1,28 @@
 package dad.puzzlepic.models;
 
+import java.io.File;
+
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Jugador {
 
 	private StringProperty nombre;
-	private StringProperty dificultad;
-	private StringProperty directorio;
-	private StringProperty modo;
+	private ObjectProperty<Dificultad> dificultad;
+	private ObjectProperty<File> directorio;
+	private ObjectProperty<Modo> modo;
 	private IntegerProperty tiempo;
 	private IntegerProperty rondas;
 
 	public Jugador() {
 		nombre = new SimpleStringProperty();
-		dificultad = new SimpleStringProperty();
-		directorio = new SimpleStringProperty();
-		modo = new SimpleStringProperty();
+		dificultad = new SimpleObjectProperty<>();
+		directorio = new SimpleObjectProperty<>();
+		modo = new SimpleObjectProperty<>();
 		tiempo = new SimpleIntegerProperty();
 		rondas = new SimpleIntegerProperty();
 	}
@@ -38,47 +42,47 @@ public class Jugador {
 	}
 	
 
-	public final StringProperty dificultadProperty() {
+	public final ObjectProperty<Dificultad> dificultadProperty() {
 		return this.dificultad;
 	}
 	
 
-	public final String getDificultad() {
+	public final Dificultad getDificultad() {
 		return this.dificultadProperty().get();
 	}
 	
 
-	public final void setDificultad(final String dificultad) {
+	public final void setDificultad(final Dificultad dificultad) {
 		this.dificultadProperty().set(dificultad);
 	}
 	
 
-	public final StringProperty directorioProperty() {
+	public final ObjectProperty<File> directorioProperty() {
 		return this.directorio;
 	}
 	
 
-	public final String getDirectorio() {
+	public final File getDirectorio() {
 		return this.directorioProperty().get();
 	}
 	
 
-	public final void setDirectorio(final String directorio) {
+	public final void setDirectorio(final File directorio) {
 		this.directorioProperty().set(directorio);
 	}
 	
 
-	public final StringProperty modoProperty() {
+	public final ObjectProperty<Modo> modoProperty() {
 		return this.modo;
 	}
 	
 
-	public final String getModo() {
+	public final Modo getModo() {
 		return this.modoProperty().get();
 	}
 	
 
-	public final void setModo(final String modo) {
+	public final void setModo(final Modo modo) {
 		this.modoProperty().set(modo);
 	}
 	
@@ -112,4 +116,7 @@ public class Jugador {
 		this.rondasProperty().set(rondas);
 	}
 	
+
+	
+
 }
